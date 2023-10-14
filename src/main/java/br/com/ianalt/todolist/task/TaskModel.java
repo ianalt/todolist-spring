@@ -23,11 +23,19 @@ public class TaskModel {
 
   @Column(length = 50)
   private String title;
-  
+
   private String description;
   private String priority;
   private LocalDateTime startedAt;
   private LocalDateTime finishedAt;
 
   private UUID userId;
+
+  public void setTitle(String title) throws Exception {
+    if (title.length() > 50) {
+      throw new Exception("Title must have 50 characters at maximum");
+    }
+
+    this.title = title;
+  }
 }
